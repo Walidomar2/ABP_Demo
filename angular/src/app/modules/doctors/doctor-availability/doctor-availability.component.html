@@ -1,0 +1,28 @@
+<div class="container">
+    <h3>{{doctorName}} Available Dates</h3>
+    <ng-container>
+        <table class="table table-bordered mt-3 align-items-center">
+            <thead>
+                <tr>
+                    <th class="text-center">Day</th>
+                    <th class="text-center">Start Date</th>
+                    <th class="text-center">End Date</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+               @for (doctorAvailability of doctorAvailabilities; track $index) 
+               {
+                <tr>
+                    <td class="text-center">{{doctorAvailability.day}}</td>
+                    <td class="text-center">{{doctorAvailability.start | date: 'dd:mM:yyyy hh:mm a'}}</td>
+                    <td class="text-center">{{doctorAvailability.end | date: 'shortTime'}}</td>
+                    <td class="text-center">
+                        <a class="btn btn-primary">Book an Appointment</a>
+                    </td>
+                </tr>
+               }
+            </tbody>
+        </table>
+    </ng-container>
+</div>

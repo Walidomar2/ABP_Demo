@@ -880,11 +880,120 @@
           "isIntegrationService": false,
           "apiVersion": null,
           "type": "ABP.Demo.Controllers.Appointments.AppointmentsController",
-          "interfaces": [],
+          "interfaces": [
+            {
+              "type": "ABP.Demo.Appointments.IAppointmentsAppService",
+              "name": "IAppointmentsAppService",
+              "methods": [
+                {
+                  "name": "GetPatientAppointments",
+                  "parametersOnMethod": [
+                    {
+                      "name": "patientId",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Appointments.PatientAppointmentDto>",
+                    "typeSimple": "[ABP.Demo.Appointments.PatientAppointmentDto]"
+                  }
+                },
+                {
+                  "name": "GetPatientUpcomingAppointments",
+                  "parametersOnMethod": [
+                    {
+                      "name": "patientId",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Appointments.PatientUpcomingAppointmentDto>",
+                    "typeSimple": "[ABP.Demo.Appointments.PatientUpcomingAppointmentDto]"
+                  }
+                },
+                {
+                  "name": "GetDoctorAppointments",
+                  "parametersOnMethod": [
+                    {
+                      "name": "doctorId",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Appointments.DoctorAppointmentDto>",
+                    "typeSimple": "[ABP.Demo.Appointments.DoctorAppointmentDto]"
+                  }
+                },
+                {
+                  "name": "GetDoctorAppointmentsRange",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    },
+                    {
+                      "name": "startDate",
+                      "typeAsString": "System.DateTime, System.Private.CoreLib",
+                      "type": "System.DateTime",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    },
+                    {
+                      "name": "endDate",
+                      "typeAsString": "System.DateTime, System.Private.CoreLib",
+                      "type": "System.DateTime",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Appointments.DoctorAppointmentDto>",
+                    "typeSimple": "[ABP.Demo.Appointments.DoctorAppointmentDto]"
+                  }
+                },
+                {
+                  "name": "GetDoctorAppointmentsCountAndStatus",
+                  "parametersOnMethod": [],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Appointments.AppointmentsCountDto>",
+                    "typeSimple": "[ABP.Demo.Appointments.AppointmentsCountDto]"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Abp.Application.Services.IApplicationService",
+              "name": "IApplicationService",
+              "methods": []
+            },
+            {
+              "type": "Abp.Dependency.ITransientDependency",
+              "name": "ITransientDependency",
+              "methods": []
+            }
+          ],
           "actions": {
-            "GetAllAppointmentsByPatiantIdById": {
-              "uniqueName": "GetAllAppointmentsByPatiantIdById",
-              "name": "GetAllAppointmentsByPatiantId",
+            "GetPatientAppointmentsById": {
+              "uniqueName": "GetPatientAppointmentsById",
+              "name": "GetPatientAppointments",
               "httpMethod": "GET",
               "url": "api/appointments/patientappointments/{id}",
               "supportedVersions": [],
@@ -919,11 +1028,11 @@
                 "typeSimple": "[ABP.Demo.Appointments.PatientAppointmentDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Appointments.AppointmentsController"
+              "implementFrom": "ABP.Demo.Appointments.IAppointmentsAppService"
             },
-            "GetUpcomingAppointmentByPatientIdById": {
-              "uniqueName": "GetUpcomingAppointmentByPatientIdById",
-              "name": "GetUpcomingAppointmentByPatientId",
+            "GetPatientUpcomingAppointmentsById": {
+              "uniqueName": "GetPatientUpcomingAppointmentsById",
+              "name": "GetPatientUpcomingAppointments",
               "httpMethod": "GET",
               "url": "api/appointments/patientupcomingappointments/{id}",
               "supportedVersions": [],
@@ -958,11 +1067,11 @@
                 "typeSimple": "[ABP.Demo.Appointments.PatientUpcomingAppointmentDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Appointments.AppointmentsController"
+              "implementFrom": "ABP.Demo.Appointments.IAppointmentsAppService"
             },
-            "GetAppointmentsByIdAndStartDateAndEndDate": {
-              "uniqueName": "GetAppointmentsByIdAndStartDateAndEndDate",
-              "name": "GetAppointments",
+            "GetDoctorAppointmentsRangeByIdAndStartDateAndEndDate": {
+              "uniqueName": "GetDoctorAppointmentsRangeByIdAndStartDateAndEndDate",
+              "name": "GetDoctorAppointmentsRange",
               "httpMethod": "GET",
               "url": "api/appointments/doctorappointmentsrange/{id}",
               "supportedVersions": [],
@@ -1037,11 +1146,11 @@
                 "typeSimple": "[ABP.Demo.Appointments.DoctorAppointmentDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Appointments.AppointmentsController"
+              "implementFrom": "ABP.Demo.Appointments.IAppointmentsAppService"
             },
-            "GetAppointmentsByDoctorIdById": {
-              "uniqueName": "GetAppointmentsByDoctorIdById",
-              "name": "GetAppointmentsByDoctorId",
+            "GetDoctorAppointmentsById": {
+              "uniqueName": "GetDoctorAppointmentsById",
+              "name": "GetDoctorAppointments",
               "httpMethod": "GET",
               "url": "api/appointments/doctorappointments/{id}",
               "supportedVersions": [],
@@ -1076,11 +1185,11 @@
                 "typeSimple": "[ABP.Demo.Appointments.DoctorAppointmentDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Appointments.AppointmentsController"
+              "implementFrom": "ABP.Demo.Appointments.IAppointmentsAppService"
             },
-            "GetAppointmentCount": {
-              "uniqueName": "GetAppointmentCount",
-              "name": "GetAppointmentCount",
+            "GetDoctorAppointmentsCountAndStatus": {
+              "uniqueName": "GetDoctorAppointmentsCountAndStatus",
+              "name": "GetDoctorAppointmentsCountAndStatus",
               "httpMethod": "GET",
               "url": "api/appointments",
               "supportedVersions": [],
@@ -1091,7 +1200,7 @@
                 "typeSimple": "[ABP.Demo.Appointments.AppointmentsCountDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Appointments.AppointmentsController"
+              "implementFrom": "ABP.Demo.Appointments.IAppointmentsAppService"
             }
           }
         },
@@ -1102,7 +1211,66 @@
           "isIntegrationService": false,
           "apiVersion": null,
           "type": "ABP.Demo.Controllers.Doctors.DoctorsController",
-          "interfaces": [],
+          "interfaces": [
+            {
+              "type": "BookingSystem.Doctors.IDoctorsAppService",
+              "name": "IDoctorsAppService",
+              "methods": [
+                {
+                  "name": "GetAllDoctors",
+                  "parametersOnMethod": [],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<BookingSystem.Doctors.DoctorDto>",
+                    "typeSimple": "[BookingSystem.Doctors.DoctorDto]"
+                  }
+                },
+                {
+                  "name": "GetPopularAppointments",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Doctors.PopularAppointmentDto>",
+                    "typeSimple": "[ABP.Demo.Doctors.PopularAppointmentDto]"
+                  }
+                },
+                {
+                  "name": "GetDoctorAvailability",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Doctors.DoctorAvailabilityDto>",
+                    "typeSimple": "[ABP.Demo.Doctors.DoctorAvailabilityDto]"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Abp.Application.Services.IApplicationService",
+              "name": "IApplicationService",
+              "methods": []
+            },
+            {
+              "type": "Abp.Dependency.ITransientDependency",
+              "name": "ITransientDependency",
+              "methods": []
+            }
+          ],
           "actions": {
             "GetAllDoctors": {
               "uniqueName": "GetAllDoctors",
@@ -1117,7 +1285,7 @@
                 "typeSimple": "[BookingSystem.Doctors.DoctorDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Doctors.DoctorsController"
+              "implementFrom": "BookingSystem.Doctors.IDoctorsAppService"
             },
             "GetPopularAppointmentsById": {
               "uniqueName": "GetPopularAppointmentsById",
@@ -1156,7 +1324,46 @@
                 "typeSimple": "[ABP.Demo.Doctors.PopularAppointmentDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Doctors.DoctorsController"
+              "implementFrom": "BookingSystem.Doctors.IDoctorsAppService"
+            },
+            "GetDoctorAvailabilityById": {
+              "uniqueName": "GetDoctorAvailabilityById",
+              "name": "GetDoctorAvailability",
+              "httpMethod": "GET",
+              "url": "api/doctors/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Int32, System.Private.CoreLib",
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [
+                    "IntRouteConstraint"
+                  ],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<ABP.Demo.Doctors.DoctorAvailabilityDto>",
+                "typeSimple": "[ABP.Demo.Doctors.DoctorAvailabilityDto]"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "BookingSystem.Doctors.IDoctorsAppService"
             }
           }
         },
@@ -1167,11 +1374,53 @@
           "isIntegrationService": false,
           "apiVersion": null,
           "type": "ABP.Demo.Controllers.Patients.PatientsController",
-          "interfaces": [],
+          "interfaces": [
+            {
+              "type": "ABP.Demo.Patients.IPatientsAppService",
+              "name": "IPatientsAppService",
+              "methods": [
+                {
+                  "name": "GetAllPatients",
+                  "parametersOnMethod": [],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Patients.PatientDto>",
+                    "typeSimple": "[ABP.Demo.Patients.PatientDto]"
+                  }
+                },
+                {
+                  "name": "GetPatientById",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "ABP.Demo.Patients.PatientDto",
+                    "typeSimple": "ABP.Demo.Patients.PatientDto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Abp.Application.Services.IApplicationService",
+              "name": "IApplicationService",
+              "methods": []
+            },
+            {
+              "type": "Abp.Dependency.ITransientDependency",
+              "name": "ITransientDependency",
+              "methods": []
+            }
+          ],
           "actions": {
-            "GetAllPatient": {
-              "uniqueName": "GetAllPatient",
-              "name": "GetAllPatient",
+            "GetAllPatients": {
+              "uniqueName": "GetAllPatients",
+              "name": "GetAllPatients",
               "httpMethod": "GET",
               "url": "api/patients",
               "supportedVersions": [],
@@ -1182,7 +1431,7 @@
                 "typeSimple": "[ABP.Demo.Patients.PatientDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Patients.PatientsController"
+              "implementFrom": "ABP.Demo.Patients.IPatientsAppService"
             },
             "GetPatientByIdById": {
               "uniqueName": "GetPatientByIdById",
@@ -1221,7 +1470,7 @@
                 "typeSimple": "ABP.Demo.Patients.PatientDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "ABP.Demo.Controllers.Patients.PatientsController"
+              "implementFrom": "ABP.Demo.Patients.IPatientsAppService"
             }
           }
         }
@@ -4136,6 +4385,63 @@
           "name": "PatientName",
           "jsonName": null,
           "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "ABP.Demo.Doctors.DoctorAvailabilityDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "DoctorName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Day",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Start",
+          "jsonName": null,
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "End",
+          "jsonName": null,
+          "type": "System.DateTime",
           "typeSimple": "string",
           "isRequired": false,
           "minLength": null,

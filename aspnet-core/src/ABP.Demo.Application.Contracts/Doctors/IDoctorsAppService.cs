@@ -11,5 +11,6 @@ namespace BookingSystem.Doctors
     {
         Task<List<DoctorDto>> GetAllDoctors();
         Task<List<PopularAppointmentDto>> GetPopularAppointments(int id);
+        Task<List<DoctorAvailabilityDto>> GetDoctorAvailability(int id);  
     }
 }

@@ -27,9 +27,16 @@ namespace ABP.Demo.Controllers.Doctors
 
         [HttpGet]
         [Route("popularappointments/{id:int}")]
-        public async Task<List<PopularAppointmentDto>> GetPopularAppointments(int id)
+        public async Task<List<PopularAppointmentDto>> GetPopularAppointments([FromRoute]  int id)
         {
             return await _doctorsAppService.GetPopularAppointments(id);
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<List<DoctorAvailabilityDto>> GetDoctorAvailability([FromRoute] int id)
+        {
+            return await _doctorsAppService.GetDoctorAvailability(id);
         }
     }
 }

@@ -11,5 +11,6 @@ namespace ABP.Demo.Doctors
     {
         Task<List<Doctor>> GetAllAsync();
         Task<List<(string AppointmentType, int Count)>> GetPopularAppointment(int id); 
+        Task<List<DoctorAvailability>> GetDoctorAvailabilities(int id);
     }
 }

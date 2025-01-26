@@ -9,7 +9,7 @@ export class PatientsService {
   apiName = 'Default';
   
 
-  getAllPatient = (config?: Partial<Rest.Config>) =>
+  getAllPatients = (config?: Partial<Rest.Config>) =>
     this.restService.request<any, PatientDto[]>({
       method: 'GET',
       url: '/api/patients',

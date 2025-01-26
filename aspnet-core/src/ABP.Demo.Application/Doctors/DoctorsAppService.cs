@@ -41,6 +41,26 @@ namespace ABP.Demo.Doctors
             return doctorDtos;
         }
 
+        public async Task<List<DoctorAvailabilityDto>> GetDoctorAvailability(int id)
+        {
+            var doctorAvailabilityDomain = await _doctorRepository.GetDoctorAvailabilities(id);
+
+            var doctorAvailabilityDto = new List<DoctorAvailabilityDto>();
+
+            foreach(var doctorAvailability in doctorAvailabilityDomain)
+            {
+                doctorAvailabilityDto.Add(new DoctorAvailabilityDto
+                {
+                    DoctorName = doctorAvailability.Doctor.Name,
+                    Day = doctorAvailability.Day.ToString(),
+                    Start = doctorAvailability.StartTime,
+                    End = doctorAvailability.EndTime,
+                });
+            }
+
+            return doctorAvailabilityDto;
+        }
+
         public async Task<List<PopularAppointmentDto>> GetPopularAppointments(int id)
         {
             var popularAppointmentsDomain = await _doctorRepository.GetPopularAppointment(id);

@@ -27,7 +27,16 @@ namespace ABP.Demo.Doctors
 
             return await dbContext.Doctors.ToListAsync();
         }
-       
+
+        public async Task<List<DoctorAvailability>> GetDoctorAvailabilities(int id)
+        {
+            var dbContext = await GetDbContextAsync();
+
+            return await dbContext.DoctorAvailabiliy.Where(a => a.DoctorId == id).
+                ToListAsync();
+
+        }
+
         public async Task<List<(string AppointmentType, int Count)>> GetPopularAppointment(int id)
         {
             var dbContext = await GetDbContextAsync();
