@@ -14,5 +14,6 @@ namespace ABP.Demo.Appointments
         Task<List<DoctorAppointmentDto>> GetDoctorAppointments(int doctorId);
         Task<List<DoctorAppointmentDto>> GetDoctorAppointmentsRange(int id, DateTime startDate, DateTime endDate);
         Task<List<AppointmentsCountDto>> GetDoctorAppointmentsCountAndStatus();
+       
     }
 }

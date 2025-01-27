@@ -16,12 +16,52 @@
                     <td class="text-center">{{ doctorAvailability.start | date: 'dd:MM:yyyy hh:mm a' }}</td>
                     <td class="text-center">{{ doctorAvailability.end | date: 'shortTime' }}</td>
                     <td class="text-center">
-                        <a class="btn btn-primary">Book an Appointment</a>
+                        <button class="btn btn-primary" (click)="isModalOpen = true; modalDate= doctorAvailability.start">Book An Appointment</button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </ng-container>
+
+
+    <abp-modal [(visible)]="isModalOpen">
+        <ng-template #abpHeader>
+          <h3>Booking An Appointment</h3>
+        </ng-template>
+      
+        <ng-template #abpBody>
+            <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+                <div class="mt-2">
+                    <div class="mt-3">
+                        <label class="form-label">Patient ID</label>
+                        <input type="text" name="patientId" class="form-control" [(ngModel)]="model.patientId"  placeholder="Enter your ID">
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label">Doctor Name</label>
+                        <input type="text" disabled name="doctorName" class="form-control" [(ngModel)]="doctorName">
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label">Date</label>
+                        <input type="datetime" disabled name="appointmentDate" class="form-control" [value]="modalDate | date: 'dd:MMM:yyyy hh:mm a'">
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label">Appointment Type</label>
+                        <select class="form-control" id="AppointmentType" [(ngModel)]="model.appointmentTypeId">
+                            <option value=null disabled selected>Select Appointment Type</option>
+                            <option [ngValue]="1">Adventure</option>
+                            <option [ngValue]="2">Biography</option>
+                          </select>
+                    </div>
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary  me-2">Save</button>
+                        <button  class="btn btn-warning" (click)="isModalOpen = false">Close</button>
+                    </div>
+                </div>
+            </form>
+        </ng-template>
+      
+       
+      </abp-modal>
 
     <ng-template #noDataTemplate>
         <div class="text-center mt-5">

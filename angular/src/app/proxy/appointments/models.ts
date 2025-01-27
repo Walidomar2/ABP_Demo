@@ -1,4 +1,8 @@
 
+export interface AppointmentTypeDto {
+  appointmentType?: string;
+}
+
 export interface AppointmentsCountDto {
   doctorName?: string;
   appointmentStatus?: string;

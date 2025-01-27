@@ -1294,6 +1294,57 @@
             }
           }
         },
+        "ABP.Demo.Controllers.Appointments.AppointmentTypesController": {
+          "controllerName": "AppointmentTypes",
+          "controllerGroupName": null,
+          "isRemoteService": false,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "ABP.Demo.Controllers.Appointments.AppointmentTypesController",
+          "interfaces": [
+            {
+              "type": "ABP.Demo.Appointment_Types.IAppointmentTypesAppService",
+              "name": "IAppointmentTypesAppService",
+              "methods": [
+                {
+                  "name": "GetAllAppointmentTypes",
+                  "parametersOnMethod": [],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<ABP.Demo.Appointments.AppointmentTypeDto>",
+                    "typeSimple": "[ABP.Demo.Appointments.AppointmentTypeDto]"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Abp.Application.Services.IApplicationService",
+              "name": "IApplicationService",
+              "methods": []
+            },
+            {
+              "type": "Abp.Dependency.ITransientDependency",
+              "name": "ITransientDependency",
+              "methods": []
+            }
+          ],
+          "actions": {
+            "GetAllAppointmentTypes": {
+              "uniqueName": "GetAllAppointmentTypes",
+              "name": "GetAllAppointmentTypes",
+              "httpMethod": "GET",
+              "url": "api/appointmenttypes",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<ABP.Demo.Appointments.AppointmentTypeDto>",
+                "typeSimple": "[ABP.Demo.Appointments.AppointmentTypeDto]"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "ABP.Demo.Appointment_Types.IAppointmentTypesAppService"
+            }
+          }
+        },
         "ABP.Demo.Controllers.Doctors.DoctorsController": {
           "controllerName": "Doctors",
           "controllerGroupName": null,
@@ -4245,6 +4296,27 @@
           "jsonName": null,
           "type": "System.Int32",
           "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "ABP.Demo.Appointments.AppointmentTypeDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "AppointmentType",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,

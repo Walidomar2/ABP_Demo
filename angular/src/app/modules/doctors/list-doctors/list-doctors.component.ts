@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorDto } from '@proxy/booking-system/doctors';
+import { DoctorDto } from '@proxy/doctors';
 import { DoctorsService } from '@proxy/doctors';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
