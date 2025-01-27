@@ -39,7 +39,7 @@ export class DoctorAvailabilityComponent implements OnInit, OnDestroy{
     private toasterService: ToasterService)
     {
       this.model = {
-        patientId: undefined,
+        patientId: null,
         doctorId: this.id,
         appointmentDate: '',
         appointmentTypeId: undefined,
@@ -88,10 +88,12 @@ export class DoctorAvailabilityComponent implements OnInit, OnDestroy{
     this.model.appointmentDate = this.modalDate;
     this.model.patientId = Number(this.model.patientId);
     this.model.appointmentTypeId = Number(this.model.patientId);
-    this.router.navigateByUrl('/doctors');
-    this.toasterService.success('Appointment Booked.');
-
-
+    this.createAppointmentSubscription = this.appointmentService.createAppointmentByCreateAppointmentModel(this.model).subscribe({
+      next:() => {
+        this.router.navigateByUrl('/doctors');
+        this.toasterService.success('Appointment Booked.');
+      }
+    });
 
     /*console.log(typeof this.model.appointmentTypeId);
     console.log(this.model);*/

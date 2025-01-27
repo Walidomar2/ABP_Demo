@@ -46,7 +46,8 @@
                     </div>
                     <div class="mt-3">
                         <label class="form-label">Appointment Type</label>
-                        <select class="form-control" id="AppointmentType" name="appointmentTypeId"  [(ngModel)]="model.appointmentTypeId" required>
+                        <select class="form-control" id="appointmentTypeId" name="appointmentTypeId"  [(ngModel)]="model.appointmentTypeId" required>
+                            <option [ngValue]=undefined disabled selected>Select Appointment Type</option>
                             <option *ngFor="let type of appointmentTypes" [value]="type.id">
                                 {{ type.appointmentType }}
                               </option>
