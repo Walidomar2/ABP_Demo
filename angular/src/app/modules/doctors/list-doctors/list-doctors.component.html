@@ -1,34 +1,35 @@
 <div class="container">
     <h1 class="mt-3">Doctors List</h1>
-    @if(doctors){
-        <ng-container>
-            <table class="table table-bordered mt-3">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Specialization</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Check Availability</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   @for (doctor of doctors; track $index) 
-                   {
-                    <tr>
-                        <td>{{doctor.name}}</td>
-                        <td>{{doctor.specialization}}</td>
-                        <td>{{doctor.email}}</td>
-                        <td>{{doctor.phoneNumber}}</td>
-                        <td>
-                            <a class="btn btn-info" routerLink="{{doctor.id}}">
-                                Availability
-                            </a>
-                        </td>
-                    </tr>
-                   }
-                </tbody>
-            </table>
-        </ng-container>
-    }
+    <ng-container *ngIf="doctors$ | async as doctors; else noDoctorsTemplate">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Check Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doctor of doctors; let i = index">
+                    <td>{{ doctor.name }}</td>
+                    <td>{{ doctor.specialization }}</td>
+                    <td>{{ doctor.email }}</td>
+                    <td>{{ doctor.phoneNumber }}</td>
+                    <td>
+                        <a class="btn btn-info" [routerLink]="doctor.id">
+                            Availability
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-template #noDoctorsTemplate>
+        <div class="alert alert-warning mt-3">
+            <h3 class="text-center">No doctors available at the moment.</h3>
+        </div>
+    </ng-template>
 </div>

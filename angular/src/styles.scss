@@ -56,3 +56,9 @@
   height: 20px;
   background-image: url('/assets/images/getting-started/x.svg');
 }
+
+.table thead th {
+  color: black;       /* Text color */
+  font-weight: bold;  /* Bold text */
+  width: auto;        /* Adjust width as needed */
+}
