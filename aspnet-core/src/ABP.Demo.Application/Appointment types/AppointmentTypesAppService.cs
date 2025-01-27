@@ -31,6 +31,7 @@ namespace ABP.Demo.Appointment_types
             {
                 appointmentTypeDtos.Add(new AppointmentTypeDto
                 {
+                    Id = appointmentType.Id,
                     AppointmentType = appointmentType.TypeName
                 });  
             }

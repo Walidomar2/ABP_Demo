@@ -16,7 +16,7 @@
                     <td class="text-center">{{ doctorAvailability.start | date: 'dd:MM:yyyy hh:mm a' }}</td>
                     <td class="text-center">{{ doctorAvailability.end | date: 'shortTime' }}</td>
                     <td class="text-center">
-                        <button class="btn btn-primary" (click)="isModalOpen = true; modalDate= doctorAvailability.start">Book An Appointment</button>
+                        <button class="btn btn-primary" (click)="isModalOpen = true; modalDate= doctorAvailability.start;">Book An Appointment</button>
                     </td>
                 </tr>
             </tbody>
@@ -34,7 +34,7 @@
                 <div class="mt-2">
                     <div class="mt-3">
                         <label class="form-label">Patient ID</label>
-                        <input type="text" name="patientId" class="form-control" [(ngModel)]="model.patientId"  placeholder="Enter your ID">
+                        <input type="text" name="patientId" class="form-control" [(ngModel)]="model.patientId"  placeholder="Enter your ID" required>
                     </div>
                     <div class="mt-3">
                         <label class="form-label">Doctor Name</label>
@@ -46,14 +46,14 @@
                     </div>
                     <div class="mt-3">
                         <label class="form-label">Appointment Type</label>
-                        <select class="form-control" id="AppointmentType" [(ngModel)]="model.appointmentTypeId">
-                            <option value=null disabled selected>Select Appointment Type</option>
-                            <option [ngValue]="1">Adventure</option>
-                            <option [ngValue]="2">Biography</option>
-                          </select>
+                        <select class="form-control" id="AppointmentType" name="appointmentTypeId"  [(ngModel)]="model.appointmentTypeId" required>
+                            <option *ngFor="let type of appointmentTypes" [value]="type.id">
+                                {{ type.appointmentType }}
+                              </option>
+                        </select>
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-primary  me-2">Save</button>
+                        <button type="submit" class="btn btn-primary  me-2">Book</button>
                         <button  class="btn btn-warning" (click)="isModalOpen = false">Close</button>
                     </div>
                 </div>

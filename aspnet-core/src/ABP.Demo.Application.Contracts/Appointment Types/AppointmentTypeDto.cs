@@ -8,6 +8,7 @@ namespace ABP.Demo.Appointments
 {
     public class AppointmentTypeDto
     {
+        public int Id { get; set; }
         public string AppointmentType { get; set; }
     }
 }

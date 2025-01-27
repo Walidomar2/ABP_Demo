@@ -1,5 +1,6 @@
 
 export interface AppointmentTypeDto {
+  id: number;
   appointmentType?: string;
 }
 
