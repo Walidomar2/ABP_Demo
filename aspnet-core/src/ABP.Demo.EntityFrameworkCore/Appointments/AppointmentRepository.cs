@@ -89,5 +89,19 @@ namespace ABP.Demo.Appointments
             return groupedAppointments.Select(a => (a.DoctorName, a.AppointmentStatus, a.AppointmentCount))
                 .ToList();
         }
+
+        public async Task<Appointment?> CreateAppointmentAsync(Appointment appointment)
+        {
+            if (appointment is null)
+            {
+                return null;
+            }
+
+            var dbContext = await GetDbContextAsync();
+
+            await dbContext.Appointments.AddAsync(appointment);
+            await dbContext.SaveChangesAsync();
+            return appointment;
+        }
     }
 }

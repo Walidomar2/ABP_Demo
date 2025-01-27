@@ -1,4 +1,4 @@
-﻿namespace BookingSystem.Appointments
+﻿namespace ABP.Demo.Appointments
 {
     public enum PaymentStatus
     {

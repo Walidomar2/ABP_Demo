@@ -9,6 +9,7 @@ namespace ABP.Demo.Appointments
 {
     public interface IAppointmentRepository
     {
+        Task<Appointment?> CreateAppointmentAsync(Appointment appointment);
         Task<List<Appointment>> GetAppointmentsByPatientId(int id);
         Task<List<Appointment>> GetUpcomingAppointmentsByPatientId(int id);
         Task<List<Appointment>> GetAppointmentsByDoctorId(int id);

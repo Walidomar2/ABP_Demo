@@ -52,11 +52,16 @@ namespace ABP.Demo.Controllers.Appointments
 
 ;       }
 
-
         [HttpGet]
         public async Task<List<AppointmentsCountDto>> GetDoctorAppointmentsCountAndStatus()
         {
            return await _appointmentsAppService.GetDoctorAppointmentsCountAndStatus();
+        }
+
+        [HttpPost]
+        public async Task<CreateAppointmentDto?> CreateAppointment(CreateAppointmentDto createAppointmentModel)
+        {
+            return await _appointmentsAppService.CreateAppointment(createAppointmentModel);
         }
     }
 }

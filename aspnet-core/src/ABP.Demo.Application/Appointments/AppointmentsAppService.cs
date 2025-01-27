@@ -123,5 +123,26 @@ namespace ABP.Demo.Appointments
 
             return appointmentsGroupDtos;
         }
+
+        public async Task<CreateAppointmentDto?> CreateAppointment(CreateAppointmentDto createAppointmentModel)
+        {
+            if (createAppointmentModel is null)
+            {
+                return null;
+            }
+
+            var appointmentModelDomain = new Appointment
+            {
+                AppointmentDate = createAppointmentModel.AppointmentDate,
+                AppointmentStatus = AppointmentStatus.Scheduled,
+                AppointmentTypeId = createAppointmentModel.AppointmentTypeId,
+                PatientId = createAppointmentModel.PatientId,
+                DoctorId = createAppointmentModel.DoctorId,
+            };
+
+            await _appointmentRepository.CreateAppointmentAsync(appointmentModelDomain);
+
+            return createAppointmentModel;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABP.Demo.Doctors;
+using System;
 using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Domain.Entities;
 
