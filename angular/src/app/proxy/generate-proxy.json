@@ -886,6 +886,23 @@
               "name": "IAppointmentsAppService",
               "methods": [
                 {
+                  "name": "CreateAppointment",
+                  "parametersOnMethod": [
+                    {
+                      "name": "createAppointmentModel",
+                      "typeAsString": "ABP.Demo.Appointments.CreateAppointmentDto, ABP.Demo.Application.Contracts",
+                      "type": "ABP.Demo.Appointments.CreateAppointmentDto",
+                      "typeSimple": "ABP.Demo.Appointments.CreateAppointmentDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "ABP.Demo.Appointments.CreateAppointmentDto",
+                    "typeSimple": "ABP.Demo.Appointments.CreateAppointmentDto"
+                  }
+                },
+                {
                   "name": "GetPatientAppointments",
                   "parametersOnMethod": [
                     {
@@ -1201,6 +1218,79 @@
               },
               "allowAnonymous": null,
               "implementFrom": "ABP.Demo.Appointments.IAppointmentsAppService"
+            },
+            "CreateAppointmentByCreateAppointmentModel": {
+              "uniqueName": "CreateAppointmentByCreateAppointmentModel",
+              "name": "CreateAppointment",
+              "httpMethod": "POST",
+              "url": "api/appointments",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "createAppointmentModel",
+                  "typeAsString": "ABP.Demo.Appointments.CreateAppointmentDto, ABP.Demo.Application.Contracts",
+                  "type": "ABP.Demo.Appointments.CreateAppointmentDto",
+                  "typeSimple": "ABP.Demo.Appointments.CreateAppointmentDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "createAppointmentModel",
+                  "name": "AppointmentDate",
+                  "jsonName": null,
+                  "type": "System.DateTime",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "createAppointmentModel"
+                },
+                {
+                  "nameOnMethod": "createAppointmentModel",
+                  "name": "PatientId",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "createAppointmentModel"
+                },
+                {
+                  "nameOnMethod": "createAppointmentModel",
+                  "name": "DoctorId",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "createAppointmentModel"
+                },
+                {
+                  "nameOnMethod": "createAppointmentModel",
+                  "name": "AppointmentTypeId",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "createAppointmentModel"
+                }
+              ],
+              "returnValue": {
+                "type": "ABP.Demo.Appointments.CreateAppointmentDto",
+                "typeSimple": "ABP.Demo.Appointments.CreateAppointmentDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "ABP.Demo.Appointments.IAppointmentsAppService"
             }
           }
         },
@@ -1213,15 +1303,15 @@
           "type": "ABP.Demo.Controllers.Doctors.DoctorsController",
           "interfaces": [
             {
-              "type": "BookingSystem.Doctors.IDoctorsAppService",
+              "type": "ABP.Demo.Doctors.IDoctorsAppService",
               "name": "IDoctorsAppService",
               "methods": [
                 {
                   "name": "GetAllDoctors",
                   "parametersOnMethod": [],
                   "returnValue": {
-                    "type": "System.Collections.Generic.List<BookingSystem.Doctors.DoctorDto>",
-                    "typeSimple": "[BookingSystem.Doctors.DoctorDto]"
+                    "type": "System.Collections.Generic.List<ABP.Demo.Doctors.DoctorDto>",
+                    "typeSimple": "[ABP.Demo.Doctors.DoctorDto]"
                   }
                 },
                 {
@@ -1281,11 +1371,11 @@
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "System.Collections.Generic.List<BookingSystem.Doctors.DoctorDto>",
-                "typeSimple": "[BookingSystem.Doctors.DoctorDto]"
+                "type": "System.Collections.Generic.List<ABP.Demo.Doctors.DoctorDto>",
+                "typeSimple": "[ABP.Demo.Doctors.DoctorDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "BookingSystem.Doctors.IDoctorsAppService"
+              "implementFrom": "ABP.Demo.Doctors.IDoctorsAppService"
             },
             "GetPopularAppointmentsById": {
               "uniqueName": "GetPopularAppointmentsById",
@@ -1324,7 +1414,7 @@
                 "typeSimple": "[ABP.Demo.Doctors.PopularAppointmentDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "BookingSystem.Doctors.IDoctorsAppService"
+              "implementFrom": "ABP.Demo.Doctors.IDoctorsAppService"
             },
             "GetDoctorAvailabilityById": {
               "uniqueName": "GetDoctorAvailabilityById",
@@ -1363,7 +1453,7 @@
                 "typeSimple": "[ABP.Demo.Doctors.DoctorAvailabilityDto]"
               },
               "allowAnonymous": null,
-              "implementFrom": "BookingSystem.Doctors.IDoctorsAppService"
+              "implementFrom": "ABP.Demo.Doctors.IDoctorsAppService"
             }
           }
         },
@@ -4164,6 +4254,63 @@
         }
       ]
     },
+    "ABP.Demo.Appointments.CreateAppointmentDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "AppointmentDate",
+          "jsonName": null,
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PatientId",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "DoctorId",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "AppointmentTypeId",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "ABP.Demo.Appointments.DoctorAppointmentDto": {
       "baseType": null,
       "isEnum": false,
@@ -4452,6 +4599,75 @@
         }
       ]
     },
+    "ABP.Demo.Doctors.DoctorDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Id",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Specialization",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Email",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PhoneNumber",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "ABP.Demo.Doctors.PopularAppointmentDto": {
       "baseType": null,
       "isEnum": false,
@@ -4506,75 +4722,6 @@
         },
         {
           "name": "FullName",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Email",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "PhoneNumber",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
-    "BookingSystem.Doctors.DoctorDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Id",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Name",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Specialization",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",

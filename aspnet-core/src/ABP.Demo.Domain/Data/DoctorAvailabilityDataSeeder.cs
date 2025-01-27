@@ -1,4 +1,5 @@
-﻿using BookingSystem.Doctors;
+﻿using ABP.Demo.Doctors;
+using BookingSystem.Doctors;
 using System;
 using System.Collections.Generic;
 using System.Linq;

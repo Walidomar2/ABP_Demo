@@ -1,4 +1,4 @@
-﻿namespace BookingSystem.Doctors
+﻿namespace ABP.Demo.Doctors
 {
     public class DoctorDto
     {

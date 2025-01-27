@@ -5,6 +5,13 @@ export interface AppointmentsCountDto {
   appointmentCount: number;
 }
 
+export interface CreateAppointmentDto {
+  appointmentDate: string;
+  patientId: number;
+  doctorId: number;
+  appointmentTypeId: number;
+}
+
 export interface DoctorAppointmentDto {
   appoinmentId: number;
   appoinmentDate?: string;

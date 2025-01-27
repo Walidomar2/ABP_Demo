@@ -1,4 +1,4 @@
-import type { AppointmentsCountDto, DoctorAppointmentDto, PatientAppointmentDto, PatientUpcomingAppointmentDto } from './models';
+import type { AppointmentsCountDto, CreateAppointmentDto, DoctorAppointmentDto, PatientAppointmentDto, PatientUpcomingAppointmentDto } from './models';
 import { RestService, Rest } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
 
@@ -7,6 +7,15 @@ import { Injectable } from '@angular/core';
 })
 export class AppointmentsService {
   apiName = 'Default';
+  
+
+  createAppointmentByCreateAppointmentModel = (createAppointmentModel: CreateAppointmentDto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, CreateAppointmentDto>({
+      method: 'POST',
+      url: '/api/appointments',
+      params: { appointmentDate: createAppointmentModel.appointmentDate, patientId: createAppointmentModel.patientId, doctorId: createAppointmentModel.doctorId, appointmentTypeId: createAppointmentModel.appointmentTypeId },
+    },
+    { apiName: this.apiName,...config });
   
 
   getDoctorAppointmentsById = (id: number, config?: Partial<Rest.Config>) =>

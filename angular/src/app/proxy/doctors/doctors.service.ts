@@ -1,7 +1,6 @@
-import type { DoctorAvailabilityDto, PopularAppointmentDto } from './models';
+import type { DoctorAvailabilityDto, DoctorDto, PopularAppointmentDto } from './models';
 import { RestService, Rest } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { DoctorDto } from '../booking-system/doctors/models';
 
 @Injectable({
   providedIn: 'root',

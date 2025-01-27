@@ -1,6 +1,5 @@
 ﻿using Abp.Application.Services;
 using ABP.Demo.Doctors;
-using BookingSystem.Doctors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

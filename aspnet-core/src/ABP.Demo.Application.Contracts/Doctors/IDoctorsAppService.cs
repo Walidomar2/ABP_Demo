@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using ABP.Demo.Appointments;
 
-namespace BookingSystem.Doctors
+namespace ABP.Demo.Doctors
 {
     public interface IDoctorsAppService : IApplicationService
     {

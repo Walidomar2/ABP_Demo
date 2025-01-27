@@ -6,6 +6,14 @@ export interface DoctorAvailabilityDto {
   end?: string;
 }
 
+export interface DoctorDto {
+  id: number;
+  name?: string;
+  specialization?: string;
+  email?: string;
+  phoneNumber?: string;
+}
+
 export interface PopularAppointmentDto {
   appointmentType?: string;
   count: number;
